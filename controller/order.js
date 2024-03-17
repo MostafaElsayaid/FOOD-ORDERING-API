@@ -1,3 +1,4 @@
+const { baseUrl } = require("../bseUrl");
 const Order = require("../model/Order");
 const stripe = require('stripe')(
     "sk_test_51OtVSrRoo6CGjFVxAKZB6yjHHxC09mI08yg3Q0ypeecGPteInljefbDQNIuOLPOlwLp2rWrXyvGUqmzIZNyYJt3b0046PQAk74"
@@ -24,8 +25,8 @@ const createOrder = async (req, res) => {
                 },
             ],
             mode: "payment",
-            success_url: "http://localhost:5173/success",
-            cancel_url: "http://localhost:5173/cancel",
+            success_url: `${baseUrl}success`,
+            cancel_url: `${baseUrl}cancel`,
         });
 
         if (session.id) {
